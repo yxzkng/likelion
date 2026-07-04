@@ -1,5 +1,13 @@
 package likelion.demo.member.repository;
 
-public interface MemberRepository {
-    // TODO: JpaRepository<Member, Long> 구현
+import likelion.demo.member.entity.Member;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.Optional;
+
+public interface MemberRepository extends JpaRepository<Member, Long> {
+
+    Optional<Member> findByLoginId(String loginId);
+
+    boolean existsByLoginId(String loginId);
 }
