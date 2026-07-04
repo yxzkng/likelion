@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   application:
     name: demo
@@ -20,7 +23,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
-
     defer-datasource-initialization: true
 
   sql:
