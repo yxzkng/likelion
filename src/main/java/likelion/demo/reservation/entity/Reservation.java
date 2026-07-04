@@ -1,7 +1,7 @@
 package likelion.demo.reservation.entity;
 
 import jakarta.persistence.*;
-import likelion.demo.member.entity.Member;
+import likelion.demo.auth.entity.Member;
 import likelion.demo.store.entity.Store;
 import lombok.AccessLevel;
 import lombok.Builder;

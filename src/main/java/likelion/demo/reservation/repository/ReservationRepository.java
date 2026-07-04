@@ -1,6 +1,6 @@
 package likelion.demo.reservation.repository;
 
-import likelion.demo.member.entity.Member;
+import likelion.demo.auth.entity.Member;
 import likelion.demo.reservation.entity.Reservation;
 import likelion.demo.reservation.entity.ReservationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;

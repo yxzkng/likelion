@@ -33,6 +33,18 @@ public class GlobalExceptionHandler {
                 .body(ApiResponse.error(409, e.getMessage()));
     }
 
+    @ExceptionHandler(DuplicateLoginIdException.class)
+    public ResponseEntity<ApiResponse<Void>> handleDuplicateLoginId(DuplicateLoginIdException e) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(ApiResponse.error(409, e.getMessage()));
+    }
+
+    @ExceptionHandler(LoginFailedException.class)
+    public ResponseEntity<ApiResponse<Void>> handleLoginFailed(LoginFailedException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(ApiResponse.error(401, e.getMessage()));
+    }
+
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiResponse<Void>> handleBadRequest(IllegalArgumentException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
