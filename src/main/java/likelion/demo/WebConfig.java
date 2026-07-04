@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer
     public void addCorsMappings(CorsRegistry registry)
     {
         registry.addMapping("/**")
-                .allowedOrigins("https://zzan-snowy.vercel.app")
+                .allowedOrigins("https://zzan-snowy.vercel.app", "http://localhost:5173", "http://localhost:5173", "http://zzzzzzzzzzan.duckdns.org:8081")
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "PATCH")
                 .allowedHeaders("*")
                 .allowCredentials(true);
