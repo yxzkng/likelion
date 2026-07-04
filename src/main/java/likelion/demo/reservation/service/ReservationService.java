@@ -4,6 +4,7 @@ import likelion.demo.global.exception.ConflictException;
 import likelion.demo.global.exception.NotFoundException;
 import likelion.demo.member.entity.Member;
 import likelion.demo.member.repository.MemberRepository;
+import likelion.demo.reservation.dto.MyReservationListResponse;
 import likelion.demo.reservation.dto.ReservationRequest;
 import likelion.demo.reservation.dto.ReservationResponse;
 import likelion.demo.reservation.entity.Reservation;
@@ -78,6 +79,21 @@ public class ReservationService {
         reservationRepository.save(reservation);
 
         return ReservationResponse.from(reservation);
+    }
+
+    public MyReservationListResponse getMyReservations(Long memberId) {
+        Member member = memberRepository.findById(memberId)
+                .orElseThrow(() -> new NotFoundException("회원을 찾을 수 없습니다."));
+
+        List<Reservation> reservations = reservationRepository.findByMember(member);
+        List<ReservationResponse> responses = reservations.stream()
+                .map(ReservationResponse::from)
+                .toList();
+
+        return MyReservationListResponse.builder()
+                .totalReservations(responses.size())
+                .reservations(responses)
+                .build();
     }
 
     private void validateSlotAvailability(Store store, ReservationRequest request) {

@@ -3,6 +3,7 @@ package likelion.demo.reservation.controller;
 import jakarta.servlet.http.HttpSession;
 import likelion.demo.global.common.ApiResponse;
 import likelion.demo.global.exception.UnauthorizedException;
+import likelion.demo.reservation.dto.MyReservationListResponse;
 import likelion.demo.reservation.dto.ReservationRequest;
 import likelion.demo.reservation.dto.ReservationResponse;
 import likelion.demo.reservation.service.ReservationService;
@@ -31,5 +32,17 @@ public class ReservationController {
         ReservationResponse response = reservationService.createReservation(memberId, request);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(ApiResponse.success(201, "예약 신청 성공", response));
+    }
+
+    @GetMapping("/me")
+    public ResponseEntity<ApiResponse<MyReservationListResponse>> getMyReservations(HttpSession session) {
+
+        Long memberId = (Long) session.getAttribute("memberId");
+        if (memberId == null) {
+            throw new UnauthorizedException("로그인이 필요합니다.");
+        }
+
+        MyReservationListResponse response = reservationService.getMyReservations(memberId);
+        return ResponseEntity.ok(ApiResponse.success(200, "예약 목록 조회 성공", response));
     }
 }
