@@ -4,9 +4,8 @@
 
 | **Frontend** | **Backend** | **기획&디자인** |
 | :---: | :---: | :---: |
-| @busicoder | @yxzkng, @minjaejyo | 정우정 |
-| [zzan-frontend](https://github.com/busicoder/bokhackaton_frontend) | [zzan-backend](https://github.com/yxzkng/zzan.git) | |
-
+| [@busicoder](https://github.com/busicoder) | [@yxzkng](https://github.com/yxzkng), [@minjaejyo](https://github.com/minjaejyo) | 정우정 |
+| [zzan-frontend](https://github.com/busicoder/bokhackaton_frontend) | [zzan-backend](https://github.com/yxzkng/zzan) | |
 <br>
 
 ## 📌 프로젝트 소개
